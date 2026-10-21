@@ -1,47 +1,58 @@
-<laravel-boost-guidelines>
-# Laravel Application
+# AGENTS.md — E-Hunian Laravel
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+## 1. Project Overview
 
-## Prerequisites
+E-Hunian Laravel merupakan backend API untuk aplikasi E-Hunian.
 
-Verify that PHP and Composer are available:
+Project menggunakan Laravel dengan pola MVC dan RESTful API.
 
-```sh
-php -v
-composer -V
-```
+## 2. Development Rules
 
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
+- Gunakan Laravel sesuai struktur MVC.
+- API menggunakan prefix `/api/v1`.
+- Gunakan autentikasi Bearer Token sesuai konfigurasi project.
+- Validasi seluruh input dari client.
+- Gunakan HTTP status code yang sesuai.
+- Gunakan API Resource untuk response API.
+- Pertahankan format JSON response yang sudah digunakan.
+- Jangan mengubah nama field API tanpa memperbarui dokumentasi dan koordinasi dengan aplikasi Flutter.
 
-macOS:
+## 3. Database Rules
 
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
-```
+- Jangan menghapus atau mengubah data database tanpa instruksi.
+- Gunakan migration untuk perubahan struktur database.
+- Pertahankan relasi antar tabel.
+- Jangan membuat duplikasi field atau tabel tanpa alasan yang jelas.
 
-Windows PowerShell:
+## 4. Git Workflow
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
+- Jangan bekerja langsung pada branch `main`.
+- Gunakan branch `dev` atau `feature/*`.
+- Gunakan Conventional Commits.
+- Perubahan fitur harus melalui Pull Request.
+- Perubahan yang sudah dipush bersama tidak boleh diubah dengan `git push --force`.
+- Untuk membatalkan commit gunakan `git revert`.
+- Periksa `git status` sebelum commit dan push.
 
-Linux:
+## 5. AI Safety Rules
 
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
-```
+Sebelum melakukan perubahan:
+1. Baca `AGENTS.md`.
+2. Baca `docs/project_guidelines.md`.
+3. Baca `docs/architecture.md`.
+4. Periksa struktur project dan file yang terkait.
 
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
+AI tidak boleh:
+- Menghapus file atau data tanpa instruksi.
+- Mengubah kredensial atau `.env`.
+- Mengubah database secara destruktif.
+- Melakukan `git push --force`.
+- Mengubah API contract tanpa memperbarui dokumentasi.
 
-## Agent Setup
+Setiap perubahan harus dilakukan seminimal mungkin dan tetap mengikuti arsitektur project.
 
-Install Laravel Boost from the application root before making application changes:
+## 6. Documentation
 
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
-
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+Jika perubahan berdampak pada API, database, arsitektur, atau workflow:
+- Perbarui dokumentasi terkait.
+- Pastikan `docs/architecture.md`, `docs/api_contract.md`, dan `docs/project_guidelines.md` tetap konsisten.
